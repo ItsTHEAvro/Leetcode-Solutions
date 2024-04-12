@@ -4,10 +4,10 @@ public:
         
         int n = height.size();
         
-        vector<int> lmax;
-        lmax.push_back(height[0]);
+        vector<int> lmax(n);
+        lmax[0] = height[0];
         for(int i=1; i<n; i++) {
-            lmax.push_back(max(lmax[i-1],height[i]));
+            lmax[i] = max(lmax[i-1],height[i]);
         }
         
         vector<int> rmax(n);
@@ -16,9 +16,9 @@ public:
             rmax[i] = max(rmax[i+1],height[i]);
         }
         
-        vector<int> minmax;
+        vector<int> minmax(n);
         for(int i=0; i<n; i++) {
-            minmax.push_back(min(lmax[i],rmax[i]));
+            minmax[i]= min(lmax[i],rmax[i]);
         }
         
         int cnt=0;
