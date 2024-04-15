@@ -15,12 +15,11 @@ public:
     int dfs(TreeNode* root, int sum) {
         if(!root) return 0;
         
-//         sum = sum*10 + root->val;
+        sum = sum*10 + root->val;
         
-//         if(!root->left && !root->right)?return sum*10 + root->val;
+        if(!root->left && !root->right) return sum;
         
-//         return dfs(root->left, sum*10 + root->val) + dfs(root->right, sum*10 + root->val);
-        return (!root->left && !root->right)?sum*10 + root->val:dfs(root->left, sum*10 + root->val)+dfs(root->right, sum*10 + root->val);
+        return dfs(root->left, sum) + dfs(root->right, sum);
     }
     
     int sumNumbers(TreeNode* root) {
