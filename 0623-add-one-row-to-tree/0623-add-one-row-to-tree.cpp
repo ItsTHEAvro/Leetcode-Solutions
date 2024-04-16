@@ -41,8 +41,8 @@ public:
             return newRoot;
         }
     
-        // int curr = 1;
-        return add(root, val, depth, 1);
+        int curr = 1;
+        return add(root, val, depth, curr);
         
     }
     
