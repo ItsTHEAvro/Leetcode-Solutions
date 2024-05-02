@@ -3,12 +3,11 @@ public:
     int findMaxK(vector<int>& nums) {
         sort(nums.begin(), nums.end());
         
-        int l = 0, r = nums.size() - 1, ans = -1;
+        int l = 0, r = nums.size() - 1;
         
         while(l <= r) {
             if(nums[r] == -nums[l]) {
-                ans = nums[r];
-                break;
+                return nums[r];
             } else if(nums[r] > -nums[l]) {
                 r--;
             } else {
@@ -16,6 +15,6 @@ public:
             }
         }
         
-        return ans;
+        return -1;
     }
 };
