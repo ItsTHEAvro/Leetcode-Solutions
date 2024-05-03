@@ -4,7 +4,7 @@ public:
         int n = version1.size(), m = version2.size(), i = 0, j = 0;
         
         while(i < n || j < m) {
-            long int tmp1 = 0, tmp2 = 0;
+            int tmp1 = 0, tmp2 = 0;
             
             while(i < n && version1[i] != '.') {
                 tmp1 = tmp1 * 10 + (version1[i] - '0');
