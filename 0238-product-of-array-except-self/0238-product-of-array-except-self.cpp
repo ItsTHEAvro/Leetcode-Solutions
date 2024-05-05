@@ -5,8 +5,7 @@ public:
         int prefix[n], suffix[n];
         
         for(int i=0; i<n; i++) {
-            prefix[i] = 1;
-            suffix[i] = 1;
+            prefix[i] = suffix[i] = 1;
         }
         
         for(int i=1; i<n; i++) {
