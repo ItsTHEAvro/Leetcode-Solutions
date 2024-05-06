@@ -10,41 +10,37 @@
  */
 class Solution {
 public:
-    ListNode* removeNodes(ListNode* head) {
-        stack<ListNode*> st;
-        
-        ListNode* curr = head;
-        
-        while(curr != nullptr) {
-            while(!st.empty() && st.top() -> val < curr -> val) {
-                st.pop();
-            }
-            
-            st.push(curr);
-            curr = curr -> next;
-        }
-        
-        ListNode* temp = new ListNode(0);
-        ListNode* prev = temp;
-        
-        while(!st.empty()) {
-            prev -> next = st.top();
-            prev = prev -> next;
-            st.pop();
-        }
-        
-        prev -> next = nullptr;
-        
+    ListNode* reverseLL(ListNode* head) {
         ListNode* prevNode = nullptr;
-        curr = temp->next;
+        ListNode* currNode = head;
         
-        while (curr != nullptr) {
-            ListNode* nextNode = curr->next;
-            curr->next = prevNode;
-            prevNode = curr;
-            curr = nextNode;
+        while (currNode != nullptr) {
+            ListNode* nextNode = currNode->next;
+            currNode->next = prevNode;
+            prevNode = currNode;
+            currNode = nextNode;
         }
 
         return prevNode;
+    }
+    
+    ListNode* removeNodes(ListNode* head) {
+        ListNode* reversedHead = reverseLL(head);
+
+        ListNode* current = reversedHead;
+        int maxValue = INT_MIN;
+        ListNode* prev = nullptr;
+
+        while (current != nullptr) {
+            if (current->val < maxValue) {
+                prev->next = current->next;
+            } else {
+                maxValue = current->val;
+                prev = current;
+            }
+            current = current->next;
+        }
+
+        return reverseLL(reversedHead);
     }
 };
