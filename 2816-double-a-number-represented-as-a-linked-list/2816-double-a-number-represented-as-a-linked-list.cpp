@@ -16,7 +16,7 @@ public:
         ListNode* prev = nullptr;
         
         while(curr != nullptr) {
-            int tmp = curr -> val * 2;
+            int tmp = curr -> val << 1;
             
             if(tmp < 10) {
                 curr -> val = tmp;
