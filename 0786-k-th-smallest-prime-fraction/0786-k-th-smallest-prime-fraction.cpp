@@ -3,22 +3,27 @@ public:
     vector<int> kthSmallestPrimeFraction(vector<int>& arr, int k) {
         int n  = arr.size();
         
-        priority_queue<vector<double>> pq;
+        // min-heap {fraction, i, j}
+        priority_queue<vector<double>, vector<vector<double>>, greater<vector<double>>> pq;
         
-        for(int i=0; i<n-1; i++) {
-            for(int j=i+1; j<n; j++) {
-                double frac = (double)arr[i] / arr[j];
-                pq.push({frac, (double)arr[i], (double)arr[j]});
-                if(pq.size() > k) pq.pop();
-            }
+        for(int i=0; i<n; i++) {
+            pq.push({(double)arr[i]/arr[n-1], (double)i, (double)(n-1)});
         }
         
-        vector<double> tmp = pq.top();
-        vector<int> res(2);
+        int cnt = 1;
+        while(cnt < k) {
+            vector<double> vec = pq.top();
+            pq.pop();
+            int i = vec[1];
+            int j = vec[2] - 1;
+            pq.push({(double)arr[i]/arr[j], (double)i, (double)j});
+            cnt++;
+        }
         
-        res[0] = tmp[1];
-        res[1] = tmp[2];
+        vector<double> res = pq.top();
+        int i = res[1];
+        int j = res[2];
         
-        return res; 
+        return {arr[i], arr[j]};
     }
 };
