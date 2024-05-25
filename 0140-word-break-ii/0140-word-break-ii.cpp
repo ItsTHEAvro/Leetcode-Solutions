@@ -7,13 +7,16 @@ public:
         
         vector<string> res;
         
-        for(int i = 0; i<= s.size(); i++) {
+        for(int i = 1; i <= s.size(); i++) {
+            
             string curr = s.substr(0, i);
+            
             if(st.count(curr)) {
-                string rem = s.substr(i);
+                string remainingWord = s.substr(i);
                 
-                vector<string> remRes = solve(rem);
-                for(string& word : remRes) {
+                vector<string> remainingRes = solve(remainingWord);
+                
+                for(string& word : remainingRes) {
                     string temp = curr + (word.empty() ? "" : " ") + word;
                     res.push_back(temp);
                 }
