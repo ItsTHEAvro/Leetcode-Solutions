@@ -7,9 +7,7 @@ public:
         sort(sorted.begin(), sorted.end());
         
         for(int i=0; i<heights.size(); i++) {
-            if(heights[i] != sorted[i]) {
-                cnt++;
-            }
+                cnt+=(heights[i] != sorted[i]);
         }
         
         return cnt;
