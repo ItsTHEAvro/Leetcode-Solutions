@@ -4,7 +4,7 @@ public:
         int x = 0;
         
         for(string operation : operations) {
-            if(operation == "++X" || operation == "X++") x++;
+            if(operation[0] == '+' || operation[2] == '+') x++;
             else x--;
         }
         
