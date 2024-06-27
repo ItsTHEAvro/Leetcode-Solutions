@@ -1,22 +1,10 @@
 class Solution {
 public:
     int findCenter(vector<vector<int>>& edges) {
-        int arr[100010] = {0};
-        
-        for(vector<int> edge:edges) {
-            for(int node:edge) {
-                arr[node]++;
-            }
+        if(edges[0][0] == edges[1][0] || edges[0][0] == edges[1][1]) {
+            return edges[0][0];
+        } else {
+            return edges[0][1];
         }
-        
-        int node = 0;
-        
-        for(; node < 100010; node++) {
-            if(arr[node] == edges.size()) {
-                return node;
-            }
-        }
-        
-        return node;
     }
 };
