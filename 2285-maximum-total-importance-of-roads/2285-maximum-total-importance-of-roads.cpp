@@ -4,9 +4,8 @@ public:
         vector<int> arr(n, 0);
         
         for(vector<int> road:roads) {
-            for(int node:road) {
-                arr[node]++;
-            }
+            arr[road[0]]++;
+            arr[road[1]]++;
         }
         
         sort(arr.rbegin(), arr.rend());
@@ -17,6 +16,8 @@ public:
         for(int i=0; i<n; i++) {
             if(arr[i]) {
                 ans += (long long)(n-i) * arr[i];
+            } else {
+                break;
             }
         }
         
