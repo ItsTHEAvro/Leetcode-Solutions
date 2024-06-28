@@ -3,7 +3,7 @@ public:
     long long maximumImportance(int n, vector<vector<int>>& roads) {
         vector<int> arr(n, 0);
         
-        for(vector<int> road:roads) {
+        for(const auto& road:roads) {
             arr[road[0]]++;
             arr[road[1]]++;
         }
