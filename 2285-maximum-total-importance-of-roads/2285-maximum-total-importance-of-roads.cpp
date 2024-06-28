@@ -10,7 +10,6 @@ public:
         
         sort(arr.rbegin(), arr.rend());
         
-        
         long long ans = 0;
         
         for(int i=0; i<n; i++) {
