@@ -16,7 +16,7 @@ public:
         
         for(int i=0; i<n; i++) {
             if(arr[i]) {
-                ans += (long long)(n-i) * (long long)arr[i];
+                ans += (long long)(n-i) * arr[i];
             }
         }
         
