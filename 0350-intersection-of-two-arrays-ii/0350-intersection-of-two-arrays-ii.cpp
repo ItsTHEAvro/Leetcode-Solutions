@@ -5,14 +5,14 @@ public:
         
         vector<int> res;
         
-        for(int i=0; i<nums1.size(); i++){
-            freq[nums1[i]]++;
+        for(const int &num : nums1){
+            freq[num]++;
         }
         
-        for(int i=0; i<nums2.size(); i++){
-            if (freq[nums2[i]] > 0){
-                freq[nums2[i]]--; 
-                res.push_back(nums2[i]);
+        for(const int &num : nums2){
+            if (freq[num] > 0){
+                freq[num]--; 
+                res.push_back(num);
             }
         }
         
