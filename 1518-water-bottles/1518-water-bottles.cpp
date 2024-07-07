@@ -1,16 +1,6 @@
 class Solution {
 public:
-    int numWaterBottles(int numBottles, int numExchange) {
-        int cnt = numBottles;
-        
-        while(numBottles >= numExchange)
-        {
-            int rem = numBottles % numExchange;
-            numBottles /= numExchange;
-            cnt += numBottles;
-            numBottles += rem;
-        }
-        
-        return cnt;
+    int numWaterBottles(int n, int k) {
+        return n + (n-1)/(k-1);
     }
 };
