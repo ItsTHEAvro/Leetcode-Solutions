@@ -2,7 +2,9 @@ class Solution {
 public:
     int chalkReplacer(vector<int>& chalk, int k) {
         int n = chalk.size();
-        long long sum = accumulate(chalk.begin(), chalk.end(), 0l);
+        long long sum = 0;
+        
+        for(const auto& i : chalk) sum += i;
         
         k %= sum;
         
