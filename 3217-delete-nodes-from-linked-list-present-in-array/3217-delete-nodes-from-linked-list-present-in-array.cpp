@@ -11,14 +11,27 @@
 class Solution {
 public:
     ListNode* modifiedList(vector<int>& nums, ListNode* head) {
-        ListNode temp(0, head);
         unordered_set<int> st(nums.begin(), nums.end());
         
-        for(auto *p = &temp; p-> next != nullptr;) {
-            if(st.contains(p -> next -> val)) p -> next = p -> next -> next;
-            else p = p-> next;
-        }
+        ListNode* tmp = new ListNode(0);
+        tmp -> next = head;
+
+        ListNode* prev = tmp;
+        ListNode* curr = head;
         
-        return temp.next;
+        while(curr != nullptr) {
+            if(st.count(curr -> val)) {
+                // skip curr and connect prev to curr's next
+                prev -> next = curr -> next;
+            } else {
+                // keep curr
+                prev = curr;
+            }
+            // move curr to the next node
+            curr = curr -> next;
+        }
+
+        // cause tmp[0] = 0
+        return tmp -> next;
     }
 };
